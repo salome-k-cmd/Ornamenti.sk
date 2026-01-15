@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}
+Ornamenti.ge - Georgian Art Marketplace
+{% endblock %}
+
+{% block body %} 
+<div class="row align-items-center py-5" style="min-height: 70vh;">
+    <div class="col-lg-6">
+        <h1 class="display-3 fw-bold mb-4">Discover <span style="color: #dc3545;">Georgian</span> Art</h1>
+        <p class="lead text-secondary mb-5">
+            Ornamenti.ge is a dedicated online platform showcasing and promoting Georgian artists and their authentic works. 
+            Purchase original, handmade artworks directly from the creators.
+        </p>
+        <div class="d-grid gap-2 d-md-flex">
+            <a href="/products" class="btn btn-danger btn-lg px-5 py-3 shadow">View Catalog</a>
+            <a href="/register" class="btn btn-outline-light btn-lg px-5 py-3">Join Now</a>
+        </div>
+    </div>
+    <div class="col-lg-6 mt-5 mt-lg-0 text-center">
+        <div class="position-relative">
+            <img src="https://art.gov.ge/wp-content/uploads/2023/10/Fisherman.-Oil-on-oilcloth.-112X915cm.-Sh.Amiranashvili-Museum-of-the-Fine-Arts-Collection.jpg" 
+                 class="img-fluid rounded shadow-lg" 
+                 alt="Georgian Art"
+                 style="border: 5px solid #2a2a2a;">
+        </div>
+    </div>
+</div>
+
+<div class="row py-5 bg-black rounded shadow-lg border border-secondary mt-5">
+    <div class="col-md-4 text-center p-4">
+        <div class="h1" style="color: #dc3545;">🎨</div>
+        <h4 class="fw-bold text-white">Authentic</h4>
+        <p class="text-secondary">Only original and handmade artworks from Georgian artists.</p>
+    </div>
+    <div class="col-md-4 text-center p-4 border-start border-end border-secondary">
+        <div class="h1" style="color: #4a90e2;">🤝</div>
+        <h4 class="fw-bold text-white">Direct</h4>
+        <p class="text-secondary">Connect with artists without intermediaries and learn the story behind each piece.</p>
+    </div>
+    <div class="col-md-4 text-center p-4">
+        <div class="h1" style="color: #b8c5d6;">🇬🇪</div>
+        <h4 class="fw-bold text-white">National</h4>
+        <p class="text-secondary">Support local production and promote Georgian culture worldwide.</p>
+    </div>
+</div>
+
+<div class="row mt-5 py-5">
+    <div class="col-12 text-center mb-5">
+        <h2 class="fw-bold">Why Choose Ornamenti?</h2>
+        <p class="text-secondary">Building a trusted platform where Georgian art meets global appreciation</p>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card bg-black border border-secondary h-100 shadow">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="rounded-circle bg-danger p-3 me-3">
+                        <i class="bi bi-shield-check fs-3 text-white"></i>
+                    </div>
+                    <h5 class="card-title mb-0 text-white">Verified Quality</h5>
+                </div>
+                <p class="card-text text-secondary">
+                    Every artwork is carefully curated and verified to ensure authenticity and quality.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card bg-black border border-secondary h-100 shadow">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="rounded-circle p-3 me-3" style="background-color: #4a90e2;">
+                        <i class="bi bi-heart fs-3 text-white"></i>
+                    </div>
+                    <h5 class="card-title mb-0 text-white">Support Local Artists</h5>
+                </div>
+                <p class="card-text text-secondary">
+                    Your purchase directly supports Georgian artists and helps promote local creativity.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row py-5 mt-4">
+    <div class="col-lg-8 mx-auto text-center">
+        <div class="card bg-black border border-secondary shadow-lg p-5">
+            <i class="bi bi-brush fs-1" style="color: #dc3545;"></i>
+            <h3 class="mt-4 text-white">Are You an Artist?</h3>
+            <p class="text-secondary mb-4">
+                Join Ornamenti and showcase your work to art lovers worldwide. 
+                Artist self-registration will be available in Phase 2.
+            </p>
+            <a href="/contact" class="btn btn-outline-light btn-lg">Get in Touch</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,265 @@
+{% extends "base.html" %} {% block title %} {{ product.name }} - Ornamenti.ge {%
+endblock %} {% block body %}
+<div class="row g-4">
+  <div class="col-lg-7">
+    <div class="card bg-black border border-secondary">
+      <img
+        src="{{ product.img }}"
+        class="card-img-top"
+        alt="{{ product.name }}"
+        style="max-height: 600px; object-fit: cover"
+      />
+    </div>
+  </div>
+
+  <div class="col-lg-5">
+    <h1 class="fw-bold mb-3">{{ product.name }}</h1>
+
+    <div class="d-flex align-items-center mb-4 text-secondary">
+      <i class="bi bi-person-circle fs-4 me-2"></i>
+      <div>
+        <small>Artist</small>
+        <p class="mb-0 text-white">{{ product.artist }}</p>
+      </div>
+    </div>
+
+    <h2 class="mb-4" style="color: #dc3545">₾{{ product.price }}</h2>
+
+    <div class="card bg-black border border-secondary mb-4">
+      <div class="card-body">
+        <h6 class="card-title">
+          <i class="bi bi-info-circle me-2"></i>Artwork Details
+        </h6>
+        <div class="row g-3 mt-2">
+          <div class="col-6">
+            <small class="text-secondary">Artist</small>
+            <p class="mb-0 text-white">{{ product.artist }}</p>
+          </div>
+          <div class="col-6">
+            <small class="text-secondary">Category</small>
+            <p class="mb-0 text-white">Original Art</p>
+          </div>
+          <div class="col-6">
+            <small class="text-secondary">Medium</small>
+            <p class="mb-0 text-white">Mixed Media</p>
+          </div>
+          <div class="col-6">
+            <small class="text-secondary">Status</small>
+            <p class="mb-0 text-success">
+              <i class="bi bi-check-circle-fill"></i> Available
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-grid gap-3">
+      {% if current_user.is_authenticated %}
+      <a href="/add_to_cart/{{ product.id }}" class="btn btn-danger btn-lg">
+        <i class="bi bi-cart-plus me-2"></i> Add to Cart
+      </a>
+      {% else %}
+      <a href="/login" class="btn btn-outline-secondary btn-lg">
+        <i class="bi bi-lock me-2"></i> Login to Add to Cart
+      </a>
+      {% endif %} {% if current_user.is_authenticated %} {% if in_wishlist %}
+      <a
+        href="/remove_from_wishlist/{{ product.id }}"
+        class="btn btn-outline-danger btn-lg"
+      >
+        <i class="bi bi-heart-fill me-2"></i> Remove from Wishlist
+      </a>
+      {% else %}
+      <a
+        href="/add_to_wishlist/{{ product.id }}"
+        class="btn btn-outline-light btn-lg"
+      >
+        <i class="bi bi-heart me-2"></i> Add to Wishlist
+      </a>
+      {% endif %} {% else %}
+      <a href="/login" class="btn btn-outline-secondary btn-lg">
+        <i class="bi bi-heart me-2"></i> Login to Add to Wishlist
+      </a>
+      {% endif %}
+    </div>
+
+    <div class="alert alert-info mt-4 bg-black border border-secondary">
+      <small class="text-secondary">
+        <i class="bi bi-shield-check me-2"></i>
+        All artworks are verified authentic. Contact us for shipping and
+        purchase details.
+      </small>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-12">
+    <h3 class="mb-4"><i class="bi bi-chat-dots me-2"></i>Comments</h3>
+
+    {% if current_user.is_authenticated %}
+    <div class="card bg-black border border-secondary mb-4 shadow">
+      <div class="card-body p-4">
+        <h5 class="card-title text-white mb-3">Leave a Comment</h5>
+        <form method="POST" action="/detailed/{{ product.id }}">
+          {{ form.hidden_tag() }}
+
+          <div class="mb-3">
+            {{ form.text.label(class="form-label text-white") }} {{
+            form.text(class="form-control bg-dark text-white border-secondary",
+            rows="4", placeholder="Share your thoughts...", style="font-size:
+            1rem;") }}
+          </div>
+
+          {{ form.submit(class="btn btn-danger") }}
+        </form>
+      </div>
+    </div>
+    {% else %}
+    <div class="alert alert-warning border border-warning">
+      <i class="bi bi-lock-fill me-2"></i>
+      Please <a href="/login" class="alert-link fw-bold">login</a> to leave a
+      comment.
+    </div>
+    {% endif %} {% if comments %}
+    <div class="comments-list">
+      {% for comment in comments %}
+      <div
+        class="card bg-black border border-secondary mb-3 shadow comment-card-hover"
+      >
+        <div class="card-body p-4">
+          <div class="d-flex align-items-start">
+            <div class="me-3">
+              <div
+                class="rounded-circle d-flex align-items-center justify-content-center"
+                style="
+                  width: 50px;
+                  height: 50px;
+                  background: linear-gradient(135deg, #dc3545, #4a90e2);
+                "
+              >
+                <i class="bi bi-person-fill fs-4 text-white"></i>
+              </div>
+            </div>
+            <div class="flex-grow-1">
+              <div
+                class="d-flex justify-content-between align-items-start mb-2"
+              >
+                <div>
+                  <h6 class="mb-0 text-white fw-bold">
+                    {{ comment.user.username }}
+                  </h6>
+                  <small class="text-secondary">
+                    <i class="bi bi-clock me-1"></i>{{
+                    comment.created_at.strftime('%B %d, %Y at %I:%M %p') }}
+                  </small>
+                </div>
+
+                {% if current_user.is_authenticated and (current_user.id ==
+                comment.user_id or current_user.role == 'Admin') %}
+                <div class="btn-group btn-group-sm">
+                  {% if current_user.id == comment.user_id %}
+                  <a
+                    href="/edit_comment/{{ comment.id }}"
+                    class="btn btn-outline-warning btn-sm"
+                    title="Edit"
+                  >
+                    <i class="bi bi-pencil"></i>
+                  </a>
+                  {% endif %}
+                  <a
+                    href="/delete_comment/{{ comment.id }}"
+                    class="btn btn-outline-danger btn-sm"
+                    title="Delete"
+                    onclick="return confirm('Are you sure you want to delete this comment?')"
+                  >
+                    <i class="bi bi-trash"></i>
+                  </a>
+                </div>
+                {% endif %}
+              </div>
+              <p
+                class="mb-2 text-white"
+                style="font-size: 1.05rem; line-height: 1.6"
+              >
+                {{ comment.text }}
+              </p>
+
+              <div class="d-flex align-items-center gap-3 mt-2">
+                {% set like_count = comment.comment_likes|length %} {% if
+                current_user.is_authenticated %}
+                <a
+                  href="#"
+                  class="text-decoration-none like-btn"
+                  data-comment-id="{{ comment.id }}"
+                >
+                  {% if comment.id in user_liked_comments %}
+                  <span style="color: #dc3545">
+                    <i class="bi bi-heart-fill"></i>
+                    <span class="like-count">{{ like_count }}</span>
+                  </span>
+                  {% else %}
+                  <span style="color: #b8c5d6">
+                    <i class="bi bi-heart"></i>
+                    <span class="like-count">{{ like_count }}</span>
+                  </span>
+                  {% endif %}
+                </a>
+                {% else %}
+                <span style="color: #6c757d">
+                  <i class="bi bi-heart"></i> {{ like_count }}
+                </span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-5">
+      <i class="bi bi-chat fs-1 text-secondary"></i>
+      <h5 class="mt-3 text-secondary">No comments yet</h5>
+      <p class="text-secondary">Be the first to share your thoughts!</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="text-center mt-5 mb-4">
+  <a href="/products" class="btn btn-outline-light btn-lg">
+    <i class="bi bi-arrow-left me-2"></i> Back to Catalog
+  </a>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".like-btn").forEach((button) => {
+      button.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const commentId = this.dataset.commentId;
+        const heartIcon = this.querySelector("i");
+        const countSpan = this.querySelector(".like-count");
+
+        fetch(`/like_comment/${commentId}`)
+          .then((response) => response.json())
+          .then((data) => {
+            countSpan.textContent = data.like_count;
+
+            if (data.liked) {
+              heartIcon.className = "bi bi-heart-fill";
+              this.querySelector("span").style.color = "#dc3545";
+            } else {
+              heartIcon.className = "bi bi-heart";
+              this.querySelector("span").style.color = "#b8c5d6";
+            }
+          })
+          .catch((error) => console.error("Error:", error));
+      });
+    });
+  });
+</script>
+
+{% endblock %}

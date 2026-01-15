@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}
+Shopping Cart - Ornamenti.ge
+{% endblock %}
+
+{% block body %}
+<div class="row mb-4">
+    <div class="col-12 text-center">
+        <h1 class="fw-bold"><i class="bi bi-cart3" style="color: #dc3545;"></i> Shopping Cart</h1>
+        <p class="text-secondary">Review your selected artworks</p>
+    </div>
+</div>
+
+{% if products %}
+<div class="row">
+    <div class="col-lg-8 mb-4">
+        {% for product in products %}
+        <div class="card bg-black border border-secondary mb-3 shadow">
+            <div class="card-body p-4">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <img src="{{ product.img }}" alt="{{ product.name }}" 
+                             class="img-fluid rounded" style="max-height: 150px; object-fit: cover;">
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="text-white mb-2">{{ product.name }}</h5>
+                        <p class="text-secondary mb-0">
+                            <i class="bi bi-person me-1"></i>{{ product.artist }}
+                        </p>
+                    </div>
+                    <div class="col-md-3 text-end">
+                        <h4 class="mb-3" style="color: #dc3545;">₾{{ product.price }}</h4>
+                        <a href="/remove_from_cart/{{ product.id }}" class="btn btn-outline-danger btn-sm">
+                            <i class="bi bi-trash"></i> Remove
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <div class="d-flex gap-3">
+            <a href="/products" class="btn btn-outline-light">
+                <i class="bi bi-arrow-left me-2"></i> Continue Shopping
+            </a>
+            <a href="/clear_cart" class="btn btn-outline-danger" onclick="return confirm('Clear entire cart?')">
+                <i class="bi bi-trash me-2"></i> Clear Cart
+            </a>
+        </div>
+    </div>
+    
+    <div class="col-lg-4">
+        <div class="card bg-black border border-secondary shadow sticky-top" style="top: 100px;">
+            <div class="card-body p-4">
+                <h4 class="text-white mb-4">Order Summary</h4>
+                
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="text-secondary">Items ({{ cart_items }})</span>
+                    <span class="text-white">₾{{ "%.2f"|format(total) }}</span>
+                </div>
+                
+                <hr style="border-color: var(--border-color);">
+                
+                <div class="d-flex justify-content-between mb-4">
+                    <h5 class="text-white mb-0">Total</h5>
+                    <h4 class="mb-0" style="color: #dc3545;">₾{{ "%.2f"|format(total) }}</h4>
+                </div>
+                
+                <div class="d-grid gap-3">
+                    <a href="/contact" class="btn btn-danger btn-lg">
+                        <i class="bi bi-cart-check me-2"></i> Proceed to Checkout
+                    </a>
+                    <p class="text-center text-secondary mb-0">
+                        <small><i class="bi bi-shield-check me-1"></i> Secure checkout</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="text-center py-5">
+    <i class="bi bi-cart-x fs-1 text-secondary"></i>
+    <h3 class="mt-4 text-secondary">Your cart is empty</h3>
+    <p class="text-secondary">Start adding artworks you love!</p>
+    <a href="/products" class="btn btn-danger mt-3">
+        <i class="bi bi-grid-3x3-gap-fill me-2"></i> Browse Catalog
+    </a>
+</div>
+{% endif %}
+
+{% endblock %}

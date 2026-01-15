@@ -1,0 +1,250 @@
+:root {
+  --primary-red: #dc3545;
+  --primary-blue: #4a90e2;
+  --primary-silver: #b8c5d6;
+  --bg-dark: #0a0e1a;
+  --bg-card: #1a1a1a;
+  --text-light: #ffffff;
+  --text-secondary: #a8b2c1;
+  --border-color: #2a2a2a;
+}
+
+body {
+  background-color: var(--bg-dark) !important;
+  color: var(--text-light) !important;
+}
+
+
+.navbar-dark .navbar-nav .nav-link {
+  color: var(--text-secondary) !important;
+  transition: color 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: var(--primary-blue) !important;
+}
+
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.2) !important;
+}
+
+.hover-lift:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3) !important;
+}
+
+
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  border: none;
+}
+
+.btn-danger:hover {
+  background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+}
+
+.btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary-blue);
+  color: var(--primary-blue) !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #0a0e1a !important;
+  border-color: var(--primary-blue) !important;
+  color: var(--text-light) !important;
+  box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25) !important;
+}
+
+.form-control::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+
+
+.alert {
+  border-radius: 8px;
+  border: none;
+}
+
+.alert-success {
+  background-color: rgba(40, 167, 69, 0.2);
+  border-left: 4px solid #28a745;
+  color: #4ade80;
+}
+
+.alert-danger {
+  background-color: rgba(220, 53, 69, 0.2);
+  border-left: 4px solid var(--primary-red);
+  color: #ff6b6b;
+}
+
+.alert-warning {
+  background-color: rgba(255, 193, 7, 0.2);
+  border-left: 4px solid #ffc107;
+  color: #ffd93d;
+}
+
+.alert-info {
+  background-color: rgba(74, 144, 226, 0.2);
+  border-left: 4px solid var(--primary-blue);
+  color: #74b9ff;
+}
+
+
+img {
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-red);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-blue);
+}
+
+
+@media (max-width: 768px) {
+  .display-3 {
+      font-size: 2.5rem;
+  }
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+a .card.hover-lift {
+  transition: all 0.3s ease;
+}
+
+a:hover .card.hover-lift {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(220, 53, 69, 0.4) !important;
+}
+
+a .card.hover-lift:hover i {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+
+.tbc-logo {
+  height: 18px;
+  width: auto;
+  filter: brightness(0.8);
+  transition: all 0.3s ease;
+  vertical-align: middle;
+}
+
+.tbc-logo-link {
+  display: inline-block;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.tbc-logo-link:hover .tbc-logo {
+  filter: brightness(1.2);
+  transform: scale(1.1);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-card-hover {
+  transition: all 0.3s ease;
+  background: rgba(26, 26, 26, 0.8) !important;
+}
+
+.comment-card-hover:hover {
+  border-color: var(--primary-blue) !important;
+  transform: translateX(5px);
+  background: rgba(26, 26, 26, 1) !important;
+}
+
+.comment-card-hover p {
+  color: #e8eaed !important;
+}
+
+.form-label {
+  color: #e8eaed !important;
+  font-weight: 500;
+}
+
+
+.alert {
+  font-size: 1rem;
+}
+
+.alert-warning {
+  background-color: rgba(255, 193, 7, 0.15) !important;
+  color: #ffd93d !important;
+  border: 1px solid #ffc107 !important;
+}
+.badge {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.1);
+  }
+}
+
+.bi-cart3:hover {
+  color: var(--primary-red) !important;
+  transition: color 0.3s ease;
+}
+
+
+.form-control::placeholder,
+.form-select::placeholder {
+    color: #d1d5db !important;
+    opacity: 1 !important;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #d1d5db !important;
+    opacity: 1 !important;
+}
+
+.form-control::-moz-placeholder {
+    color: #d1d5db !important;
+    opacity: 1 !important;
+}

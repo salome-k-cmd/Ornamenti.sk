@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}
+Contact Us - Ornamenti.ge
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-6 mb-5 mb-lg-0">
+        <h1 class="fw-bold mb-4">Get in Touch</h1>
+        <p class="text-secondary fs-5 mb-4">
+            Have questions about purchasing artwork, artist collaborations, or want to learn more about Ornamenti? 
+            We'd love to hear from you.
+        </p>
+        
+        <div class="card bg-black border border-secondary mb-3">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-start">
+                    <div class="rounded-circle p-3 me-3" style="background-color: #dc3545;">
+                        <i class="bi bi-envelope fs-4 text-white"></i>
+                    </div>
+                    <div>
+                        <h5 class="mb-1">Email</h5>
+                        <p class="text-secondary mb-0">info@ornamenti.ge</p>
+                        <small class="text-secondary">We'll respond within 24 hours</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card bg-black border border-secondary mb-3">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-start">
+                    <div class="rounded-circle p-3 me-3" style="background-color: #4a90e2;">
+                        <i class="bi bi-telephone fs-4 text-white"></i>
+                    </div>
+                    <div>
+                        <h5 class="mb-1">Phone</h5>
+                        <p class="text-secondary mb-0">+995 574 201 613</p>
+                        <small class="text-secondary">Mon-Fri, 10:00 - 18:00</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card bg-black border border-secondary">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-start">
+                    <div class="rounded-circle p-3 me-3" style="background-color: #b8c5d6;">
+                        <i class="bi bi-geo-alt fs-4 text-dark"></i>
+                    </div>
+                    <div>
+                        <h5 class="mb-1">Location</h5>
+                        <p class="text-secondary mb-0">Tbilisi, Georgia</p>
+                        <small class="text-secondary">Showcasing Georgian art worldwide</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <h5 class="mb-3">Follow Us</h5>
+            <div class="d-flex gap-3">
+                <a href="https://www.facebook.com/GeoLabEdu/" class="btn btn-outline-light btn-lg" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <i class="bi bi-facebook fs-4"></i>
+                </a>
+                <a href="https://www.instagram.com/geolabcommunity/" class="btn btn-outline-light btn-lg" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <i class="bi bi-instagram fs-4"></i>
+                </a>
+                <a href="https://www.youtube.com/@lsGeolab" class="btn btn-outline-light btn-lg" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                    <i class="bi bi-youtube fs-4"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-6">
+        <div class="card bg-black border border-secondary">
+            <div class="card-body p-4">
+                <h3 class="mb-4">Send us a Message</h3>
+                <form method="POST" action="/contact">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="mb-3">
+                        {{ form.name.label(class="form-label text-white") }}
+                        {{ form.name(class="form-control bg-dark text-white border-secondary", placeholder="Enter your name") }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.email.label(class="form-label text-white") }}
+                        {{ form.email(class="form-control bg-dark text-white border-secondary", placeholder="your.email@example.com") }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.subject.label(class="form-label text-white") }}
+                        {{ form.subject(class="form-select bg-dark text-white border-secondary") }}
+                    </div>
+                    
+                    <div class="mb-4">
+                        {{ form.message.label(class="form-label text-white") }}
+                        {{ form.message(class="form-control bg-dark text-white border-secondary", rows="6", placeholder="Tell us more...") }}
+                    </div>
+                    
+                    {{ form.submit(class="btn btn-danger btn-lg w-100") }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5 pt-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Frequently Asked Questions</h2>
+        <p class="text-secondary">Quick answers to common questions</p>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card bg-black border border-secondary h-100">
+                <div class="card-body p-4">
+                    <h5 class="text-white">How do I purchase an artwork?</h5>
+                    <p class="text-secondary mb-0">
+                        Browse our catalog, click on any artwork, and use the "Inquire to Purchase" button. 
+                        We'll contact you to arrange payment and shipping.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card bg-black border border-secondary h-100">
+                <div class="card-body p-4">
+                    <h5 class="text-white">Are all artworks authentic?</h5>
+                    <p class="text-secondary mb-0">
+                        Yes! Every piece is carefully curated and verified. We work directly with Georgian artists 
+                        to ensure authenticity and quality.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card bg-black border border-secondary h-100">
+                <div class="card-body p-4">
+                    <h5 class="text-white">Do you ship internationally?</h5>
+                    <p class="text-secondary mb-0">
+                        Yes, we ship worldwide. Shipping costs and delivery times vary by location. 
+                        Contact us for detailed shipping information.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card bg-black border border-secondary h-100">
+                <div class="card-body p-4">
+                    <h5 class="text-white">Can I sell my art on Ornamenti?</h5>
+                    <p class="text-secondary mb-0">
+                        Currently, we curate all content. Artist self-registration will be available in Phase 2. 
+                        Contact us to submit your work for review.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
