@@ -1,14 +1,22 @@
-Ornamenti 🎨
-Final project for TBC x GeoLab Back-end Python course. Georgian art gallery site.
+🎨 Ornamenti - Georgian Art Gallery
+Final project for TBC x GeoLab Back-end Python course.
 
-What's inside:
-Backend: Flask / Python
+Ornamenti is a web platform dedicated to showcasing Georgian art and heritage. It features an AI-driven assistant and interactive community tools.
 
-DB: SQLite (SQLAlchemy)
+Tech Stack & Implementation
+Backend: Python / Flask
+Database: SQLite & SQLAlchemy (Models for Users, Artworks, and Comments)
+AI Integration: Groq API (Configured with a specific System Prompt to act as a specialized Gallery Assistant)
+Frontend: Bootstrap 5 (Dark Theme) & Vanilla JavaScript
+UX Enhancement: AJAX for "Like" buttons to provide a seamless experience without page refreshes.
+Admin Features: Secure Dashboard with full CRUD functionality (Create, Read, Update, Delete) for managing the collection.
 
-AI: Groq API (it has a system prompt so it knows it's a gallery assistant)
+Security & Deployment
+Hosting: Deployed on Render.
+Environment Variables: API keys and Secret Keys are managed via environment variables (not hardcoded) for security.
 
-Other stuff: AJAX for the like buttons (so no page refresh), Bootstrap for the dark theme, and some basic CRUD for the admin.
-
-Hosting:
-Deployed on Render. API keys are in the environment variables, not in the code.
+Installation
+Clone the repo.
+Install dependencies: pip install -r requirements.txt.
+Set up your .env file with GROQ_API_KEY.
+Run python app.py
