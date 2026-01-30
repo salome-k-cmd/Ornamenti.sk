@@ -33,9 +33,18 @@ products = [
     {"name":"Still Life with Cantaloupe", "artist":"William Mason Brown", "price":"125", "image":"https://images.unsplash.com/photo-1763073064895-a71c40af5ddf?q=80&w=1239&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "id": 3},
     {"name":"An Owl", "price":"135", "artist":"Moses Haughton the Elder", "image":"https://images.unsplash.com/photo-1650214562914-9db1ae262752?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "id": 4},
     # {"name":"Viva la Vida, Watermelons", "artist":"Frida Kahlo", "price":"300", "image":"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQD2a2_CLQ88nG6IeGQAISi7U2pZndUADniDwOC41N2NWCXNjLgUjQceynurMt7", "id": 4},
-    {"name":"Viva la Vida, Watermelons", "price":"300", "artist":"Moses Haughton the Elder", "image":"/static/images/viva-la-vida-watermelons.jpg", "id": 5},
+    {"name":"Viva la Vida, Watermelons", "price":"300", "artist":"Moses Haughton the Elder", "image":"/static/images/viva-la-vida-watermelons.jpg", "id": 6},
     
 ]
+@app.route('/products') 
+def index():
+    items = Product.query.all()
+    for item in items:
+        if item.id == 6: 
+            item.artist = "Frida Kahlo"
+            item.name = "Viva la Vida, Watermelons"
+            item.image = "/static/images/viva-la-vida-watermelons.jpg"
+    return render_template('products.html', items=items)
 role= "Admin"
 def populate_initial_products():
     for p in products:
@@ -464,5 +473,6 @@ def like_comment(comment_id):
 
 
     return jsonify({'liked': liked, 'like_count': like_count})
+
 
 
